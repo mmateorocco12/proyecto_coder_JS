@@ -1,0 +1,20 @@
+.bienvenido{
+    text-align: center;
+    font-size: 5em;
+    margin-top: 50px;
+}
+.introduccion{
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 30px;
+}
+.navbar-brand{
+    font-family: Blocktastic;
+}
+.imagengoku{
+    margin-left: 50px;
+}
+.imagenhomelander{
+    margin-right: 50px;
+    border-radius: 50%;
+}
