@@ -137,46 +137,75 @@
 
 // ElegirProducto();
 
+
+
+
+
+// CODIGO FINAL 
+
+
+  
+
 const ContentContainer = document.querySelector("#content-container");
 
-let Nombre = prompt("Hola! Ingresa tu Nombre para seguir a la pagina.")
-localStorage.setItem("Nombre", Nombre);
 
-function Recibir(){
 
-    const Bienvenido = document.createElement("div")
-    Bienvenido.innerHTML = `
-    <h1 class="bienvenida">Bienvenido ${Nombre} !</h1>
-    <h2 class="coso">Aquí podras encontrar las figuras de tus personajes favoritos!</h2>
-    `;
+Swal.fire({
+    title: 'Ingresa tu Nombre',
+    input: 'text',
+    icon: 'question',
+    confirmButtonText: 'Aceptar',
+})
+.then(resultado => {
+    if (resultado.value) {
+        let nombre = resultado.value;
+        console.log(nombre);
 
-    ContentContainer.append(Bienvenido);
-}
+     localStorage.setItem("Nombre", nombre);
 
-Recibir();
+       function Recibir(){
+
+             const Bienvenido = document.createElement("div")
+             Bienvenido.innerHTML = `
+             <h1 class="bienvenida">Bienvenido ${nombre} !</h1>
+             <h2 class="coso">Aquí podras encontrar las figuras de tus personajes favoritos!</h2>
+            `;
+
+            ContentContainer.append(Bienvenido);
+       }
+
+       Recibir();
+    }
+});
+
+
+
+
 
 const Productos = []
 
-function Figuras (id, nombre, precio, cantidad, imagen){
+class Figuras {
+    constructor(id, nombre, precio, cantidad, imagen){
     this.id = id;
     this.nombre = nombre;
     this.precio = precio;
     this.cantidad = cantidad;
     this.imagen = imagen;
+    }
 }
 
-const Figura01 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 20, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
-const Figura02 = new Figuras ("goku_base", "Goku Base", 10000, 50, "https://i.pinimg.com/originals/c8/cd/88/c8cd8814dc4422d8d1165a57227b88ae.png")
-const Figura03 = new Figuras ("homelander_rayos", "Homelander", 12000, 10, "https://necaonline.com/wp-content/uploads/2021/07/Homelander12-scaled.jpg")
-const Figura04 = new Figuras ("batman_knifes", "Batman", 5000, 60, "https://http2.mlstatic.com/D_NQ_NP_635840-MLA47808929722_102021-O.jpg")
-const Figura05 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 20, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
-const Figura06 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 20, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
-const Figura07 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 20, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
-const Figura08 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 20, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
-const Figura09 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 20, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
-const Figura10 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 20, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
-const Figura11 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 20, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
-const Figura12 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 20, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
+const Figura01 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 0, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
+const Figura02 = new Figuras ("goku_base", "Goku Base", 10000, 0, "https://i.pinimg.com/originals/c8/cd/88/c8cd8814dc4422d8d1165a57227b88ae.png")
+const Figura03 = new Figuras ("homelander_rayos", "Homelander", 12000, 0, "https://necaonline.com/wp-content/uploads/2021/07/Homelander12-scaled.jpg")
+const Figura04 = new Figuras ("batman_knifes", "Batman", 5000, 0, "https://http2.mlstatic.com/D_NQ_NP_635840-MLA47808929722_102021-O.jpg")
+const Figura05 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 0, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
+const Figura06 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 0, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
+const Figura07 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 0, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
+const Figura08 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 0, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
+const Figura09 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 0, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
+const Figura10 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 0, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
+const Figura11 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 0, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
+const Figura12 = new Figuras ("darth_vader_mythos", "Darth Vader Mythos", 15000, 0, "http://d3ugyf2ht6aenh.cloudfront.net/stores/001/332/596/products/darth-vader-mythos_star-wars_gallery_61e9e0a0ee0961-c8ed58c8f713f9a20716432196873078-640-0.jpg")
 
 Productos.unshift(Figura01);
 Productos.push(Figura02);
@@ -196,6 +225,7 @@ console.log(Productos);
 const ProductContainer = document.querySelector(".product-container")
 let botonAgregar = document.querySelectorAll(".figure-buy")
 const CartContent = document.querySelector(".carrito-content")
+const Carritoh3 = document.querySelector(".carrito-h3");
 
 
 function AddProduct() {
@@ -217,6 +247,7 @@ function AddProduct() {
     })
 
     ActualizarBotones();
+    
 }
 
 AddProduct();
@@ -239,37 +270,112 @@ function AddCart(e) {
     const idButton = e.currentTarget.id;
     const ProductIn = Productos.find(producto => producto.id === idButton);
 
-    CartProducts.push(ProductIn);
+    if(CartProducts.some(producto => producto.id === idButton)){
+        const index = CartProducts.findIndex(producto => producto.id === idButton)
+        CartProducts[index].cantidad++;
 
-    console.log(CartProducts);
+    }else{
+        ProductIn.cantidad = 1;
+        CartProducts.push(ProductIn);
+    }
+
+    InCart();
     console.log(CartProducts.length);
-    
 }
 
-let NombreRecu = localStorage.getItem("Nombre");
-console.log(NombreRecu);
+const CartProductsJSON = JSON.stringify(CartProducts);
+localStorage.setItem("ProductosEnCarrito", CartProductsJSON);
+
+console.log(CartProducts);
+
 
 function CartLength(){
-
-    const CartText = document.createElement("div");
-    CartText.classList.add("texto-carrito");
-
-    if(CartProducts.length == 0)
-    {
-        CartText.innerHTML = `
-        <h3 class="carrito-h3"> Oh No ${NombreRecu}, tu Carrito esta vacío :(</h3>
-        `;
-    }
-    else
-    {
-
-    }
-
-    CartContent.append(CartText);
+    botonAgregar.forEach(boton => {
+        boton.addEventListener("click", () => {
+            Carritoh3.classList.add("active");
+        })
+    })  
 }
 
 CartLength();
 
+const CarritoProducto = document.querySelector(".carrito-producto");
 
+const TotalPrice = document.querySelectorAll(".total-precio")
+
+
+function InCart(){
+
+    botonAgregar.forEach(boton => {
+        boton.addEventListener("click", () => {
+            CarritoProducto.innerHTML = ""
+            CartProducts.find(thing => {
+                const coso = document.createElement("div");
+                coso.classList.add("thing");
+                coso.innerHTML = `
+                <p class="producto-en-numero">${CartProducts.indexOf(thing)}</p>
+                <p class="producto-en-carrito">${thing.nombre}</p>
+                <p class="producto-en-precio">$${thing.precio} AR$ </p>
+                <p class="producto-en-cantidad">Cantidad: ${thing.cantidad}</p>
+                <button class="boton-eliminar-producto" id="${thing.id}><i class="bi bi-trash"></i>Eliminar Producto</button>
+                `;
+        
+                CarritoProducto.append(coso);
+                console.log(thing.cantidad)
+            })
+
+            const Total = document.createElement("div");
+            Total.classList.add("total-precio")
+            Total.innerHTML = `
+            <h4 class="total-compra">El total de tu compra es de: $${CartProducts.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0)}</h4>
+            <button class="boton-comprar">COMPRAR</button>
+            `;
+            
+            CarritoProducto.append(Total);
+        })
+        
+    })
+
+    EliminarCarro();
+}
+let botonEliminar = document.querySelectorAll(".boton-eliminar-producto")
+
+
+function EliminarCarro() {
+    botonEliminar = document.querySelectorAll(".boton-eliminar-producto")
+
+    botonEliminar.forEach(boton => {
+        boton.addEventListener("click", EliminadoDelCarro);
+    })
+}
+
+function EliminadoDelCarro(e) {
+
+    const idButton = e.currentTarget.id;
+    const index = CartProducts.findIndex(producto => producto.id === idButton)
+    
+    CartProducts.splice(index, 1);
+    InCart();
+}
+
+const BotonComprar = document.querySelector(".boton-comprar")
+
+function CompraExitosa(){
+    BotonComprar.addEventListener("click", () => {
+        Swal.fire({
+            title: 'Queres confirmar tu compra?',
+            icon: 'success',
+            confirmButtonText: 'Aceptar',
+            showCancelButton: true,
+        }).then((result) => {
+            if(result.isConfirmed){
+                alert("Bien hecho, tu compra fue exitosa")
+            }
+            else{
+                alert("tu compra fue rechazada")
+            }
+        })
+    });
+}
 
 
